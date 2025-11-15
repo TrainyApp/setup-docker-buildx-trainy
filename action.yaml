@@ -1,0 +1,14 @@
+name: 'Setup Docker BuildX'
+description: 'Setup for Trainy docker build CI'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Docker buildx
+      uses: docker/setup-buildx-action@v3
+      with:
+        driver: kubernetes
+        driver-opts: |
+          namespace=buildkit-runners
+          qemu.install=true
+
